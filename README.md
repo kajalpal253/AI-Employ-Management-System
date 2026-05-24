@@ -1,6 +1,3 @@
-# AI-Employ-Management-System
-AI Powered Employee Management System built using Spring Boot, Spring Security, JWT Authentication, OTP Email Verification, CRUD APIs, and AI-based Resume Screening.
-
 # AI Powered Employee Management System
 
 A secure Employee Management System developed using Spring Boot, Spring Security, JWT Authentication, OTP Email Verification, and AI-based Resume Screening.
