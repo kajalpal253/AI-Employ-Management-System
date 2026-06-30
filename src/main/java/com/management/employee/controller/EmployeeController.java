@@ -50,7 +50,7 @@ public class EmployeeController {
         employee.setDepartment(request.getDepartment());
         employee.setSalary(request.getSalary());
         employee.setGender(request.getGender());
-        
+         employee.setPhone(request.getPhone());        
         return service.addEmployee(employee);
     }
     

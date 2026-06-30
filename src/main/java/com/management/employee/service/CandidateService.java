@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.management.employee.model.Candidate;
+import com.management.employee.model.Employee;
 import com.management.employee.repository.CandidateRepository;
 
 @Service
@@ -27,7 +28,18 @@ public class CandidateService{
         return repository.save(candidate);
     }
 
+    public Candidate getCandidateById(Long id){
+
+        return repository.findById(id).orElseThrow(()-> new RuntimeException("Candidate Not Found"));
+    }
     public List<Candidate>getAllCandidate(){
         return repository.findAll();
+    }
+
+    public String deleteCandidate(Long id){
+        Candidate candidate =getCandidateById(id);
+        System.out.println(candidate);
+        repository.delete(candidate);
+      return "Candidate Deleted Successfully";
     }
 }

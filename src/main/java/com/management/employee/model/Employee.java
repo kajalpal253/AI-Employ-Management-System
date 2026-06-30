@@ -15,9 +15,11 @@ public class Employee{
    private Long id;
    private String name;
    private String department;
-   private String Gender;
-   private String Phone;
+  
    private Double salary;
-   private String email;
 
+   private String email;
+    private String gender;
+   private String phone;
+   
 }

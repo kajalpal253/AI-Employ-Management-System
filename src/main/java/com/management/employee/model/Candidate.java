@@ -25,7 +25,8 @@ public class Candidate {
     private String name;
     private String email;
     private String skills;
-
+private String gender;
+private String phone;
     private String recommendedrole;
     private double score;
     
