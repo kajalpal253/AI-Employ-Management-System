@@ -23,7 +23,7 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
     
-    public  User registerUser(User user){
+    public  User registerUser1(User user){
          
         String otp = otpService.generateOtp();
         user.setOtp(otp);
@@ -34,7 +34,7 @@ public class UserService {
         return repository.save(user);
         
     }
-
+    
     public User findByUsername(String username){
 
         return repository.findByUsername(username).orElseThrow(()-> new RuntimeException("User not found"));
@@ -65,5 +65,14 @@ public class UserService {
     public  User findByEmail(String email){
         return repository.findByEmail(email).orElseThrow(()->new RuntimeException("User not found"));
     }
+
+  
+
+    
+
+    public void deleteUser(Long id) {
+        repository.deleteById(id);
+    }
+
     
 }

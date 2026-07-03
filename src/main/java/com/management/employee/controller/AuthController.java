@@ -13,8 +13,10 @@ import com.management.employee.security.JwtUtil;
 import com.management.employee.service.EmailService;
 import com.management.employee.service.OtpService;
 import com.management.employee.service.UserService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -44,16 +46,18 @@ public class AuthController{
         user.setPassword(request.getPassword());
         user.setRole(request.getRole());
        
-        return service.registerUser(user);
+        return service.registerUser1(user);
     }
 
     @PostMapping("/login")
 public String login(@RequestBody LoginRequest request) {
 
-    System.out.println("USERNAME = " + request.getUsername());
-    System.out.println("PASSWORD = " + request.getPassword());
-
+    
     User existUser = service.findByUsername(request.getUsername());
+    System.out.println("Verified = " + existUser.isVarified());
+    if(!existUser.isVarified()){
+        return "Please verify your email first";
+    }
 
     if(passwordEncoder.matches(request.getPassword(), existUser.getPassword())) {
 
@@ -87,8 +91,7 @@ public String sendOtpp(@RequestBody OtpRequest request){
             );
 
     if (verified) {
-        User user = service.findByEmail(request.getEmail());
-        return jwtUtil.generateToken(user.getUsername());
+        return "OTP Verified Successfully";
     }
 
     return "Invalid OTP";
@@ -97,6 +100,12 @@ public String sendOtpp(@RequestBody OtpRequest request){
 
     }
     
-    
+    @DeleteMapping("/delete/{id}")
+public String deleteUser(@PathVariable Long id) {
+
+    service.deleteUser(id);
+
+    return "User Deleted Successfully";
+}
 
 }

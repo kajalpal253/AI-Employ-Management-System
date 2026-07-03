@@ -30,6 +30,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService service;
 
+
     @GetMapping
     public List<Employee> getAllEmployees() {
         return service.getAllEmployees();
@@ -64,4 +65,5 @@ public class EmployeeController {
          service.deleteEmployee(id);
          return "Employee deleted successfully";
      }
+    
 }
