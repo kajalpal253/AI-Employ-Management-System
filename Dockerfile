@@ -1,7 +1,13 @@
-FROM  eclipse-temurin:21-jdk
+FROM  eclipse-temurin:21-jdk AS builder
 
 WORKDIR /app
 
-COPY build/libs/*.jar app.jar
+COPY . .
+RUN chmod +x gradlew
+RUN ./gradlew build -x test
+FROM eclipse-temurin:21-jdk
+
+WORKDIR /app
+COPY --from=builder /app/build/libs/*.jar app.jar
 EXPOSE  8999
-ENTRYPOINT [ "java","-jar","app.jar" ]
+ENTRYPOINT [ "java","-jar","app.jar"]
