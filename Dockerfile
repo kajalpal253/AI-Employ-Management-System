@@ -9,5 +9,4 @@ FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
-EXPOSE  8999
-ENTRYPOINT [ "java","-jar","app.jar"]
+ENTRYPOINT ["sh" ,"-c" "java -jar   app.jar --server.port=${PORT}"]
