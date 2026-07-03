@@ -51,8 +51,7 @@ public class SecurityConfig {
 public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
 
-    configuration.setAllowedOrigins(List.of("http://localhost:3000"));
-    configuration.setAllowedMethods(List.of("*"));
+    configuration.setAllowedOrigins(List.of("http://localhost:3000","https://ai-employee-management-system-front-gray.vercel.app"));
     configuration.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
         configuration.setAllowedHeaders(List.of("*"));
 
