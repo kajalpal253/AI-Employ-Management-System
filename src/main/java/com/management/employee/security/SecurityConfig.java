@@ -54,7 +54,8 @@ public CorsConfigurationSource corsConfigurationSource() {
 
     configuration.setAllowedOrigins(List.of(
         "http://localhost:3000",
-        "https://ai-employee-management-system-front-gray.vercel.app"
+       
+        "https://ems-kajals-projects-5fbb46db.vercel.app/"
     ));
 
     configuration.setAllowedMethods(List.of(
